@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Miestai</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h3>Miestai</h3>
+	<table>
+		<tr th:each="miestas : ${miestai}">
+			<td th:text="${miestas.getPavadinimas()}"></td>
+			<td th:text="${miestas.getSalies_kodas()}"></td>
+			<td th:text="${miestas.getIkurimo_data()}"></td>	
+			<td th:text="${miestas.getGyventojai()}"></td>
+			<td th:text="${miestas.getPlotas()}"></td>					
+		</tr>
+	</table>	
+</body>
+</html>
