@@ -6,6 +6,21 @@
 </head>
 <body>
 	<h3>Miestai</h3>
+	<form method="POST" action="">
+		<label for="pav">Miestas</label><br>
+		<input type="text" id="pav" name="pav" value=""><br>
+		<label for="salies_kodas">Šalies kodas</label><br>		
+		<input type="text" id="salies_kodas" name="salies_kodas" value=""><br>
+		<label for="ikurimo_data">Įkūrimo data</label><br>		
+		<input type="text" id="ikurimo_data" name="ikurimo_data" value=""><br>
+		<label for="pav">Gyventojai</label><br>		
+		<input type="text" id="gyventojai" name="gyventojai" value="0"><br>
+		<label for="pav">Plotas</label><br>		
+		<input type="text" id="plotas" name="plotas" value="0.0"><br>
+		<input type="hidden" id="id" name="id" value="0">		
+		<input type="submit" id="saugoti" name="saugoti" value="saugoti">
+	</form>	
+	
 	<table>
 		<tr th:each="miestas : ${miestai}">
 			<td th:text="${miestas.getPavadinimas()}"></td>
