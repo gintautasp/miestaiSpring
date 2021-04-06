@@ -49,7 +49,38 @@
 		      alert ( 'atidarom dialoga' );
 		      dialog.dialog( "open" );
 		    });
+		    	
+		    $( ".edit" ).each ( function() {
+		    
+		    	$( this ).click ( function() {
+		    	
+		    		id_miesto = $( this ).data ( 'el_id' );
+		    		
+					$.ajax({
+						 method: 'POST'
+				 		 , url: '/miestas'
+				 		 , data: {
+				 		 	id: id_miesto
+				 		 }
+					}).done( function( data ) {
+						
+						// alert ( "gauti duomenys: " + data );
+						if ( data != null ) {
+						
+							$( '#pav' ).val ( data.pavadinimas );
+							$( '#salies_kodas' ).val ( data.salies_kodas );
+							$( '#ikurimo_data' ).val ( data.ikurimo_data );
+							$( '#gyventojai' ).val ( data.gyventojai );
+							$( '#plotas' ).val ( data.plotas );					
+							$( '#id').val ( data.id );
+		      				dialog.dialog( "open" );							
+						}
+						console.log ( JSON.stringify ( data ) );
+				  	});			    		
+		    		
+		    	});	
 		    			    
+		    });
 		  }); 
   	</script>	
 </head>
@@ -83,7 +114,8 @@
 			<td th:text="${miestas.getSalies_kodas()}"></td>
 			<td th:text="${miestas.getIkurimo_data()}"></td>	
 			<td th:text="${miestas.getGyventojai()}"></td>
-			<td th:text="${miestas.getPlotas()}"></td>					
+			<td th:text="${miestas.getPlotas()}"></td>	
+			<td><input type="button" class="edit" th:attr="data-el_id=${miestas.getId()}" value="redaguoti"></td>				
 		</tr>
 	</table>	
 </body>
