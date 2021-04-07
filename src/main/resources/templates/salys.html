@@ -19,11 +19,10 @@
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   	<script>
   		/*
-  		function addMiestas() {
+  		function addSalis() {
   		
   			alert( "tuoj pridesim" );
-  			$( '#miesto-forma' ).submit();
-  			
+  			$( '#miesto-forma' ).submit();	
   		}
   	
   		$( document ).ready ( function() {
@@ -87,13 +86,13 @@
   	</script>	
 </head>
 <body>
-	<h3>Salys</h3>
+	<h3>Šalys</h3>
 	<input type="button" id="salis" value="Nauja šalis">
-	<div id="dialog-form" title="Miestas">
+	<div id="dialog-form" title="Šalis">
   		<p class="validateTips">All form fields are required.</p>	
 		<form id="miesto-forma" method="POST" action="">
 			  <fieldset>
-				<label for="pav">Miestas</label>
+				<label for="pav">Šalis</label>
 				<input type="text" id="pav" name="pav" value="" class="text ui-widget-content ui-corner-all">
 				<label for="salies_kodas">Šalies kodas</label>		
 				<input type="text" id="salies_kodas" name="salies_kodas" value="" class="text ui-widget-content ui-corner-all">		
@@ -107,6 +106,7 @@
 		<tr th:each="salis : ${salys}">
 			<td th:text="${salis.getSalis()}"></td>
 			<td th:text="${salis.getSalies_kodas()}"></td>
+			<td><span th:each="miestas : ${salis.getMiestas()}" th:text="|${miestas.getPavadinimas()}, |"></span></td>			
 			<td><input type="button" class="edit" th:attr="data-el_id=${salis.getId()}" value="redaguoti"></td>				
 		</tr>
 	</table>	
