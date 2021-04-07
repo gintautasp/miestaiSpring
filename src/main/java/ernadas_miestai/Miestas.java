@@ -3,10 +3,12 @@ package ernadas_miestai;
 import java.util.List;
 import java.util.Set;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity
-public class Miestas {
+public class Miestas implements Serializable {
 	
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -21,6 +23,18 @@ public class Miestas {
     private int gyventojai;
     
     private double plotas;
+    
+    @ManyToOne
+    @JoinColumn(name="salies_kodas", referencedColumnName="salies_kodas", insertable=false, updatable=false)
+    private Salis salis;    
+
+	public Salis getSalis() {
+		return salis;
+	}
+
+	public void setSalis(Salis salis) {
+		this.salis = salis;
+	}
 
 	public Integer getId() {
 		return Id;

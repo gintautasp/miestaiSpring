@@ -18,6 +18,7 @@
   	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   	<script>
+  		/*
   		function addMiestas() {
   		
   			alert( "tuoj pridesim" );
@@ -82,11 +83,12 @@
 		    			    
 		    });
 		  }); 
+		 */
   	</script>	
 </head>
 <body>
-	<h3>Miestai</h3>
-	<input type="button" id="new_miestas" value="Naujas miestas">
+	<h3>Salys</h3>
+	<input type="button" id="salis" value="Nauja šalis">
 	<div id="dialog-form" title="Miestas">
   		<p class="validateTips">All form fields are required.</p>	
 		<form id="miesto-forma" method="POST" action="">
@@ -94,14 +96,7 @@
 				<label for="pav">Miestas</label>
 				<input type="text" id="pav" name="pav" value="" class="text ui-widget-content ui-corner-all">
 				<label for="salies_kodas">Šalies kodas</label>		
-				<input type="text" id="salies_kodas" name="salies_kodas" value="" class="text ui-widget-content ui-corner-all">
-				<label for="ikurimo_data">Įkūrimo data</label>		
-				<input type="text" id="ikurimo_data" name="ikurimo_data" value="" class="text ui-widget-content ui-corner-all">
-				<label for="pav">Gyventojai</label>
-				<input type="text" id="gyventojai" name="gyventojai" value="0" class="text ui-widget-content ui-corner-all">
-				<label for="pav">Plotas</label>		
-				<input type="text" id="plotas" name="plotas" value="0.0" class="text ui-widget-content ui-corner-all">
-				<input type="hidden" id="id" name="id" value="0">		
+				<input type="text" id="salies_kodas" name="salies_kodas" value="" class="text ui-widget-content ui-corner-all">		
 				<input type="hidden" id="saugoti" name="saugoti" value="saugoti">
 			    <!-- Allow form submission with keyboard without duplicating the dialog button -->
 			    <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">				
@@ -109,14 +104,10 @@
 		</form>	
 	</div>	
 	<table>
-		<tr th:each="miestas : ${miestai}">
-			<td th:text="${miestas.getPavadinimas()}"></td>
-			<td th:text="${miestas.getSalies_kodas()}"></td>
-			<td th:text="${miestas.getSalis()} == null ? '???' : ${miestas.getSalis().getSalis()}"></td>			
-			<td th:text="${miestas.getIkurimo_data()}"></td>	
-			<td th:text="${miestas.getGyventojai()}"></td>
-			<td th:text="${miestas.getPlotas()}"></td>	
-			<td><input type="button" class="edit" th:attr="data-el_id=${miestas.getId()}" value="redaguoti"></td>				
+		<tr th:each="salis : ${salys}">
+			<td th:text="${salis.getSalis()}"></td>
+			<td th:text="${salis.getSalies_kodas()}"></td>
+			<td><input type="button" class="edit" th:attr="data-el_id=${salis.getId()}" value="redaguoti"></td>				
 		</tr>
 	</table>	
 </body>
